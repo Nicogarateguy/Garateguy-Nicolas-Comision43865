@@ -54,7 +54,7 @@ def buscarDuracion(request):
     return render(request, "app/buscarDuracion.html")
 
 def buscar2(request):
-    if 'duracion' in request.GET['duracion']:
+    if 'duracion' in request.GET:
         duracion = request.GET['duracion']
         carreras = Carrera.objects.filter(duracion__icontains=duracion)
         return render(request, "app/resultadosDuracion.html", {"duracion": duracion}, {"carreras":carreras})
