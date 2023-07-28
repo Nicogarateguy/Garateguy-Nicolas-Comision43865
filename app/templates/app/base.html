@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% load static %}
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Inicio | UC</title>
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="{% static 'app/css/styles.css' %}" rel="stylesheet" />
+    </head>
+    <body id="page-top">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+            <div class="container px-4">
+                <a class="navbar-brand" href="">Inicio</a>
+                margin-right: 5px
+                <a class="navbar-brand" href="{% url 'carreras' %}">Carreras</a>
+                <a class="navbar-brand" href="{% url 'postgrados' %}">Postgrados</a>
+                <a class="navbar-brand" href="{% url 'docentes' %}">Docentes</a>
+                <a class="navbar-brand" href="{% url 'alumnos' %}">Alumnos</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="#about">Sobre nosotros</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#services">Desarrollo profesional</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#contact">Contacto</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Header-->
+        <header class="bg-primary bg-blue text-white">
+            <div class="container px-4 text-center">
+                <h1 class="fw-bolder">UNIVERSIDAD CENTRAL</h1>
+                <p  class="lead">CONSTRUI TU FUTURO </p>
+            </div>
+        </header>
+        <!-- About section-->
+        <section id="about">
+            <div class="container px-4">
+                <div class="row gx-4 justify-content-center">
+                    <div class="col-lg-8">
+                        <h2>Misión, identidad y valores</h2>
+                        <p class="lead">Identidad y valores</p>
+                        <p class="lead", style="text-align:justify;">La Universidad de Montevideo es una universidad de identidad cristiana abierta a personas de todas las creencias. Está inspirada en las enseñanzas de san Josemaría Escrivá, fundador del Opus Dei, sobre el valor del trabajo bien hecho, el espíritu de servicio, el amor a la libertad y la promoción de la familia. Estos principios se fomentan en un clima de convivencia y respeto.</p>
+                        <p class="lead">Mision</p>
+                        <p class="lead", style="text-align:justify;">La Universidad de Montevideo tiene como misión promover una cultura de trabajo y de servicio en la persona, la familia y la sociedad, mediante la búsqueda de la excelencia en el quehacer universitario. Funda su actividad académica en una concepción trascendente de la persona, comprometida con la búsqueda de la verdad.</p>
+                        <ul>
+                            <li>Clickable nav links that smooth scroll to page sections</li>
+                            <li>Responsive behavior when clicking nav links perfect for a one page website</li>
+                            <li>Bootstrap's scrollspy feature which highlights which section of the page you're on in the navbar</li>
+                            <li>Minimal custom CSS so you are free to explore your own unique design options</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Services section-->
+        <section class="bg-light" id="services">
+            <div class="container px-4">
+                <div class="row gx-4 justify-content-center">
+                    <div class="col-lg-8">
+                        <h2>Desarrollo profesional</h2>
+                        <p class="lead", style="text-align:justify;">La oficina de Desarrollo Profesional (Career services) depende del área Alumni y gestiona distintos programas y servicios para mejorar la experiencia, empleabilidad y conexiones de los alumnos a la hora de insertarse en el mercado laboral. Mediante el Portal laboral, los alumnos y graduados podrán descubrir oportunidades de pasantías y llamados de distintas organizaciones para ocupar puestos laborales. </p>
+                        <p class="lead">Coordinadora: Florencia Gómez   Asistente: Noel Rodríguez</p>
+                        <p class="lead">Contacto: desarrolloprofesional@uc.edu.uy</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Contact section-->
+        <section id="contact">
+            <div class="container px-4">
+                <div class="row gx-4 justify-content-center">
+                    <div class="col-lg-8">
+                        <h2>Contacto</h2>
+                        <p class="lead">Prudencio de Pena 2544</p>
+                        <p class="lead">(+598) 2 707 44 61</p>
+                        <p class="lead">info@uc.edu.uy</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Footer-->
+        <footer class="py-5 bg-dark">
+            <div class="container px-4"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p></div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="{% static 'app/js/scripts.js' %}"></script>
+    </body>
+</html>

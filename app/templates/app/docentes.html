@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Docentes</title>
+</head>
+<body bgcolor="grey">
+    <h1>Docentes</h1>
+<table class="table">
+    <thead class="thead-dark"></thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">Email</th>
+            <th scope="col">Profesion</th>
+        </tr>
+    </thead>
+    <tbody>    
+    {% for docente in docentes %}
+    <tr>
+        <td>{{ docente.id }}</td>
+        <td>{{ docente.nombre }}</td>
+        <td>{{ docente.apellido }}</td>
+        <td>{{ docente.email }}</td>
+        <td>{{ docente.profesion }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</body>
+</html>

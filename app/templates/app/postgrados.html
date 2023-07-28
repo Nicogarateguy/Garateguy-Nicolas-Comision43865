@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Postgrados</title>
+</head>
+<body bgcolor="lightblue">
+    <h1>Postgrados</h1>
+<table class="table">
+    <thead class="thead-dark"></thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Modalidad</th>
+            <th scope="col">Duracion</th>
+            <th scope="col">Financiacion</th>
+        </tr>
+    </thead>
+    <tbody>    
+    {% for postgrado in postgrados %}
+    <tr>
+        <td>{{ postgrado.id }}</td>
+        <td>{{ postgrado.nombre }}</td>
+        <td>{{ postgrado.modalidad }}</td>
+        <td>{{ postgrado.duracion }}</td>
+        <td>{{ postgrado.financiacion }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</body>
+</html>
