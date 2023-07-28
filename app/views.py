@@ -37,6 +37,13 @@ def postgradoForm(request):
         return HttpResponse("Postgrado ingresado correctamente") 
     return render(request, "app/postgradoForm.html")
 
+def docenteForm(request): 
+    if request.method == "POST":
+        docente = Docente(nombre=request.POST['nombre'], apellido=request.POST['apellido'], email=request.POST['email'], profesion=request.POST['profesion'])
+        docente.save()
+        return HttpResponse("Docente ingresado correctamente") 
+    return render(request, "app/docenteForm.html")
+
 def carreraForm2(request):
     if request.method == "POST":
        miForm = CarreraForm(request.POST)
@@ -50,6 +57,8 @@ def carreraForm2(request):
         miForm = CarreraForm()      
     return render(request, "app/carreraForm2.html", {"form":miForm})
 
+
+
 def buscarDuracion(request):
     return render(request, "app/buscarDuracion.html")
 
@@ -57,6 +66,7 @@ def buscar2(request):
     if 'duracion' in request.GET:
         duracion = request.GET['duracion']
         carreras = Carrera.objects.filter(duracion__icontains=duracion)
-        return render(request, "app/resultadosDuracion.html", {"duracion": duracion}, {"carreras":carreras})
-    
-    return HttpResponse("No se ingresaron datos")
+        if duracion:
+            return render(request, "app/resultadosDuracion.html", {"duracion": duracion, "carreras":carreras})
+        else:
+            return HttpResponse("No se ingresaron datos")
