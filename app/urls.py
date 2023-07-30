@@ -8,6 +8,8 @@ urlpatterns = [
     path('postgrados/', postgrados, name="postgrados"),
     path('docentes/', docentes, name="docentes"),
     path('alumnos/', alumnos, name="alumnos"),
+    path('becas/', becas, name ="becas"),
+    path('alumni_blue/', alumniblue, name ="alumni_blue"),
     
     path('carrera_form/', carreraForm, name="carrera_form"),
     path('postgrado_form/', postgradoForm, name="postgrado_form"),

@@ -23,6 +23,12 @@ def docentes(request):
 def alumnos(request):
     return render(request, "app/alumnos.html")
 
+def becas(request):
+    return render(request, "app/becas.html")
+
+def alumniblue(request):
+    return render(request, "app/alumniblue.html")
+
 def carreraForm(request):
     if request.method == "POST":
         carrera = Carrera(nombre=request.POST['nombre'], modalidad=request.POST['modalidad'], duracion=request.POST['duracion'], financiacion=request.POST['financiacion'])
