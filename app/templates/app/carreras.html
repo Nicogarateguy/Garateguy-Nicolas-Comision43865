@@ -29,6 +29,18 @@
 <body style="background-image: url('{% static 'app/assets/fondo.jpg' %}'); background-size: cover; color: white;"></body>
 <body>
     <div class="container">
+        <table>
+            <tr>
+                <td width="200"><h3>Carreras</h3></td>
+                <td>
+                    <a
+                    href="{% url 'create_carrera' %}"
+                    class="btn btn-primary btn-sm"
+                    ><i class="fa fa-plus fa-lg" title="New Record"> </i>
+                    </a>
+                </td>
+            </tr>
+        </table>
         <table class="table table-striped table-light">
           <thead class="thead-dark">
             <tr>
@@ -37,6 +49,7 @@
               <th scope="col">Modalidad</th>
               <th scope="col">Duracion</th>
               <th scope="col">Financiacion</th>
+              <th scope="col">Acciones</th>
             </tr>
           </thead>
           <tbody>
@@ -47,6 +60,20 @@
                   <td>{{ carrera.modalidad }}</td>
                   <td>{{ carrera.duracion }}</td>
                   <td>{{ carrera.financiacion }}</td>
+                  <td>
+                      <a
+                        href="{% url 'update_carrera' carrera.id %}"
+                        class="btn btn-primary"
+                        style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                        ><i class="fa fa-edit fa-sm" title="Edit Record"></i>
+                      </a>
+                      <a
+                        href="{% url 'delete_carrera' carrera.id %}"
+                        class="btn btn-danger"
+                        style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                        ><i class="fa fa-trash fa-sm" title="Delete Record"></i>
+                      </a>
+                   </td>
               </tr>
               {% endfor %}
           </tbody>

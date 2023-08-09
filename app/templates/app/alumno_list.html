@@ -25,16 +25,16 @@
 
   </style>
 </head>
-<h1>Docentes</h1>
+<h1>Alumnos</h1>
 <body style="background-image: url('{% static 'app/assets/fondo2.jpg' %}'); background-size: cover; color: dark-grey"></body>
 <body>
     <div class="container">
       <table>
             <tr>
-                <td width="200"><h3>Docentes</h3></td>
+                <td width="200"><h3>Alumnos</h3></td>
                 <td>
                     <a
-                    href="{% url 'create_docente' %}"
+                    href="{% url 'create_alumno' %}"
                     class="btn btn-primary btn-sm"
                     ><i class="fa fa-plus fa-lg" title="New Record"> </i>
                     </a>
@@ -48,27 +48,25 @@
             <th scope="col">Nombre</th>
             <th scope="col">Apellido</th>
             <th scope="col">Email</th>
-            <th scope="col">Profesion</th>
             <th scope="col">Acciones</th>
           </tr>
         </thead>
         <tbody>
-            {% for docente in docentes %}
+            {% for p in alumno_list %}
             <tr>
-                <td>{{ docente.id }}</td>
-                <td>{{ docente.nombre }}</td>
-                <td>{{ docente.apellido }}</td>
-                <td>{{ docente.email }}</td>
-                <td>{{ docente.profesion }}</td>
+                <td>{{ p.id }}</td>
+                <td>{{ p.nombre }}</td>
+                <td>{{ p.apellido }}</td>
+                <td>{{ p.email }}</td>
                 <td>
                     <a
-                      href="{% url 'update_docente' docente.id %}"
+                      href="#"
                       class="btn btn-primary"
                       style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
                       ><i class="fa fa-edit fa-sm" title="Edit Record"></i>
                     </a>
                     <a
-                      href="{% url 'delete_docente' docente.id %}"
+                      href="#"
                       class="btn btn-danger"
                       style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
                       ><i class="fa fa-trash fa-sm" title="Delete Record"></i>
