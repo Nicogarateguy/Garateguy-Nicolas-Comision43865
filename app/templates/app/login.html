@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Docentes</title>
+</head>
+<body>
+    <br>
+    {% if mensaje %}
+    <h4>
+        <p style="color:red" align="center">
+        {{ mensaje }}
+        </p>
+    </h4>
+    {% endif %}
+
+    <form action="" method="post">
+        {% csrf_token %}
+        <table>
+            {{ form.as_table }}
+        </table>
+        <button type="submit" >Iniciar Sesión</button>
+    </form>
+</body>
+</html>

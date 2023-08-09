@@ -35,5 +35,7 @@ urlpatterns = [
     path('update_alumno/<int:pk>/', AlumnoUpdate.as_view(), name="update_alumno"),
     path('delete_alumno/<int:pk>/', AlumnoDelete.as_view(), name="delete_alumno"),
 
+    path('login/', login_request, name="login"),
+
 
 ]

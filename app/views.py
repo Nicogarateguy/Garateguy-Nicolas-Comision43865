@@ -9,6 +9,9 @@ from django.views.generic import DetailView
 from django.views.generic import UpdateView
 from django.views.generic import DeleteView
 
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import authenticate, login, logout
+
 # Create your views here.
 
 def index(request):
@@ -250,5 +253,26 @@ class AlumnoUpdate(UpdateView):
 
 class AlumnoDelete(DeleteView):
     model = Alumno
-    success_url = reverse_lazy('alumnos')           
+    success_url = reverse_lazy('alumnos') 
+
+
+def login_request(request):
+    if request.method == "POST":
+        miForm = AuthenticationForm(request.POST)
+        if miForm.is_valid():
+            usuario = miForm.cleaned_data.get('username')
+            clave = miForm.cleaned_data.get('password')
+            user = authenticate(username=usuario, password=clave)
+            if user is not None:
+                login(request, user)
+                return render(request, 'app/base.html', {"mensaje": f"Bienvenido {usuario}"})
+            else:
+                return render(request, 'app/login.html', {"mensaje": "Datos incorrectos"})
+        else:
+            return render(request, 'app/login.html', {"mensaje": "Datos incorrectos"})
+
+    miForm: AuthenticationForm()      
+
+    return render(request, "app/login.html", {"form":miForm})
+
 
