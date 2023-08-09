@@ -6,6 +6,8 @@ from .forms import *
 from django.views.generic import ListView
 from django.views.generic import CreateView
 from django.views.generic import DetailView
+from django.views.generic import UpdateView
+from django.views.generic import DeleteView
 
 # Create your views here.
 
@@ -239,5 +241,14 @@ class AlumnoCreate(CreateView):
     success_url = reverse_lazy('alumnos')
 
 class AlumnoDetail(DetailView):
-    model = Alumno    
+    model = Alumno
+
+class AlumnoUpdate(UpdateView):
+    model = Alumno
+    fields = ['nombre', 'apellido', 'email']
+    success_url = reverse_lazy('alumnos') 
+
+class AlumnoDelete(DeleteView):
+    model = Alumno
+    success_url = reverse_lazy('alumnos')           
 

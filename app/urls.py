@@ -31,7 +31,9 @@ urlpatterns = [
 
     path('alumnos/', AlumnoList.as_view(), name="alumnos"),
     path('create_alumno/', AlumnoCreate.as_view(), name="create_alumno"),
-    path('detail_alumno/', AlumnoDetail.as_view(), name="detail_alumno"),
+    path('detail_alumno/<int:pk>/', AlumnoDetail.as_view(), name="detail_alumno"),
+    path('update_alumno/<int:pk>/', AlumnoUpdate.as_view(), name="update_alumno"),
+    path('delete_alumno/<int:pk>/', AlumnoDelete.as_view(), name="delete_alumno"),
 
 
 ]

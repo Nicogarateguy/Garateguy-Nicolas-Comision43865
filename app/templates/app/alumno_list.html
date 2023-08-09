@@ -60,13 +60,19 @@
                 <td>{{ p.email }}</td>
                 <td>
                     <a
-                      href="#"
+                      href="{% url 'detail_alumno' p.id %}"
+                      class="btn btn-info"
+                      style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                      ><i class="fa fa-search fa-sm" title="View Record"></i>
+                    </a> 
+                    <a
+                      href="{% url 'update_alumno' p.id %}"
                       class="btn btn-primary"
                       style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
                       ><i class="fa fa-edit fa-sm" title="Edit Record"></i>
                     </a>
                     <a
-                      href="#"
+                      href="{% url 'delete_alumno' p.id %}"
                       class="btn btn-danger"
                       style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
                       ><i class="fa fa-trash fa-sm" title="Delete Record"></i>
