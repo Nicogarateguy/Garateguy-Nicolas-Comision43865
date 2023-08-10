@@ -257,8 +257,10 @@ class AlumnoDelete(DeleteView):
 
 
 def login_request(request):
+    miForm = AuthenticationForm()
+
     if request.method == "POST":
-        miForm = AuthenticationForm(request.POST)
+        miForm = AuthenticationForm(request, data=request.POST)
         if miForm.is_valid():
             usuario = miForm.cleaned_data.get('username')
             clave = miForm.cleaned_data.get('password')
@@ -267,11 +269,9 @@ def login_request(request):
                 login(request, user)
                 return render(request, 'app/base.html', {"mensaje": f"Bienvenido {usuario}"})
             else:
-                return render(request, 'app/login.html', {"mensaje": "Datos incorrectos"})
+                return render(request, 'app/login.html', {"form":miForm, "mensaje": "Datos incorrectos"})
         else:
-            return render(request, 'app/login.html', {"mensaje": "Datos incorrectos"})
-
-    miForm: AuthenticationForm()      
+            return render(request, 'app/login.html', {"form":miForm, "mensaje": "Datos incorrectos"})
 
     return render(request, "app/login.html", {"form":miForm})
 
