@@ -38,7 +38,7 @@ urlpatterns = [
     path('delete_alumno/<int:pk>/', AlumnoDelete.as_view(), name="delete_alumno"),
 
     path('login/', login_request, name="login"),
-    path('logout/', LogoutView.as_view(template_name="aplicacion/logout.html"), name="logout"),
+    path('logout/', LogoutView.as_view(template_name="app/logout.html"), name="logout"),
 
 
 ]
