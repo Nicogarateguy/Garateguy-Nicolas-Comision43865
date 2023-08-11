@@ -9,8 +9,10 @@ from django.views.generic import DetailView
 from django.views.generic import UpdateView
 from django.views.generic import DeleteView
 
-from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -86,11 +88,12 @@ def buscar2(request):
         else:
             return HttpResponse("No se ingresaron datos")
         
-
+@login_required
 def docentes(request):
     ctx = {'docentes': Docente.objects.all() }
     return render(request, "app/docentes.html", ctx) 
 
+@login_required
 def updateDocente(request, id_docente):
     docente = Docente.objects.get(id=id_docente)
     if request.method == "POST":
@@ -109,11 +112,13 @@ def updateDocente(request, id_docente):
                                        'profesion':docente.profesion})         
     return render(request, "app/docenteForm.html", {'form': miForm})  
 
+@login_required
 def deleteDocente(request, id_docente):
     docente = Docente.objects.get(id=id_docente)
     docente.delete()
     return redirect(reverse_lazy('docentes'))
 
+@login_required
 def createDocente(request):
     if request.method == "POST":
         miForm = DocenteForm(request.POST)
@@ -135,11 +140,12 @@ def createDocente(request):
 
     return render(request, "app/docenteForm.html", {'form': miForm})  
 
-
+@login_required
 def carreras(request):
     ctx = {'carreras': Carrera.objects.all() }
     return render(request, "app/carreras.html", ctx)
 
+@login_required
 def updateCarrera(request, id_carrera):
     carrera = Carrera.objects.get(id=id_carrera)
     if request.method == "POST":
@@ -158,11 +164,13 @@ def updateCarrera(request, id_carrera):
                                       'financiacion':carrera.financiacion})         
     return render(request, "app/carreraForm2.html", {'form': miForm})  
 
+@login_required
 def deleteCarrera(request, id_carrera):
     carrera = Carrera.objects.get(id=id_carrera)
     carrera.delete()
     return redirect(reverse_lazy('carreras'))
 
+@login_required
 def createCarrera(request):
     if request.method == "POST":
         miForm = CarreraForm(request.POST)
@@ -185,11 +193,12 @@ def createCarrera(request):
     return render(request, "app/carreraForm2.html", {'form': miForm}) 
 
 
-
+@login_required
 def postgrados(request):
     ctx = {'postgrados': Postgrado.objects.all() }
     return render(request, "app/postgrados.html", ctx)
 
+@login_required
 def updatePostgrado(request, id_postgrado):
     postgrado = Postgrado.objects.get(id=id_postgrado)
     if request.method == "POST":
@@ -208,11 +217,13 @@ def updatePostgrado(request, id_postgrado):
                                       'financiacion':postgrado.financiacion})         
     return render(request, "app/postgradoForm.html", {'form': miForm})
 
+@login_required
 def deletePostgrado(request, id_postgrado):
     postgrado = Postgrado.objects.get(id=id_postgrado)
     postgrado.delete()
     return redirect(reverse_lazy('postgrados'))
 
+@login_required
 def createPostgrado(request):
     if request.method == "POST":
         miForm = PostgradoForm(request.POST)
@@ -235,23 +246,23 @@ def createPostgrado(request):
     return render(request, "app/postgradoForm.html", {'form': miForm}) 
 
 
-class AlumnoList(ListView):
+class AlumnoList(LoginRequiredMixin, ListView):
     model = Alumno
 
-class AlumnoCreate(CreateView):
+class AlumnoCreate(LoginRequiredMixin, CreateView):
     model = Alumno
     fields = ['nombre', 'apellido', 'email']
     success_url = reverse_lazy('alumnos')
 
-class AlumnoDetail(DetailView):
+class AlumnoDetail(LoginRequiredMixin, DetailView):
     model = Alumno
 
-class AlumnoUpdate(UpdateView):
+class AlumnoUpdate(LoginRequiredMixin, UpdateView):
     model = Alumno
     fields = ['nombre', 'apellido', 'email']
     success_url = reverse_lazy('alumnos') 
 
-class AlumnoDelete(DeleteView):
+class AlumnoDelete(LoginRequiredMixin, DeleteView):
     model = Alumno
     success_url = reverse_lazy('alumnos') 
 
@@ -267,6 +278,13 @@ def login_request(request):
             user = authenticate(username=usuario, password=clave)
             if user is not None:
                 login(request, user)
+                try:
+                    avatar = Avatar.objects.get(user=request.user.id).imagen.url
+                except:
+                    avatar = '/media/avatares/default.png'
+                finally:
+                    request.session['avatar'] = avatar
+                    
                 return render(request, 'app/base.html', {"mensaje": f"Bienvenido {usuario}"})
             else:
                 return render(request, 'app/login.html', {"form":miForm, "mensaje": "Datos incorrectos"})
@@ -274,5 +292,61 @@ def login_request(request):
             return render(request, 'app/login.html', {"form":miForm, "mensaje": "Datos incorrectos"})
 
     return render(request, "app/login.html", {"form":miForm})
+
+def register(request):
+    if request.method == 'POST':
+        form = RegistroUsuariosForm(request.POST) # UserCreationForm 
+        if form.is_valid():  # Si pasó la validación de Django
+            usuario = form.cleaned_data.get('username')
+            form.save()
+            return render(request, "app/base.html", {"mensaje1":"Usuario Creado con Éxito"})        
+    else:
+        form = RegistroUsuariosForm()
+
+    return render(request, "app/registro.html", {"form": form}) 
+
+@login_required
+def editarPerfil(request):
+    usuario = request.user
+    if request.method == "POST":
+        form = UserEditForm(request.POST)
+        if form.is_valid():
+            usuario.email = form.cleaned_data.get('email')
+            usuario.password1 = form.cleaned_data.get('password1')
+            usuario.password2 = form.cleaned_data.get('password2')
+            usuario.first_name = form.cleaned_data.get('first_name')
+            usuario.last_name = form.cleaned_data.get('last_name')
+            usuario.save()
+            return render(request, "app/base.html", {'mensaje': f"Usuario {usuario.username} actualizado correctamente"})
+        else:
+            return render(request, "app/editarPerfil.html", {'form': form})
+    else:
+        form = UserEditForm(instance=usuario)
+    return render(request, "app/editarPerfil.html", {'form': form, 'usuario':usuario.username})
+
+
+@login_required
+def agregarAvatar(request):
+    if request.method == "POST":
+        form = AvatarFormulario(request.POST, request.FILES)
+        if form.is_valid():
+            u = User.objects.get(username=request.user)
+            #_________________ Esto es para borrar el avatar anterior
+            avatarViejo = Avatar.objects.filter(user=u)
+            if len(avatarViejo) > 0: # Si esto es verdad quiere decir que hay un Avatar previo
+                avatarViejo[0].delete()
+
+            #_________________ Grabo avatar nuevo
+            avatar = Avatar(user=u, imagen=form.cleaned_data['imagen'])
+            avatar.save()
+
+            #_________________ Almacenar en session la url del avatar para mostrarla en base
+            imagen = Avatar.objects.get(user=request.user.id).imagen.url
+            request.session['avatar'] = imagen
+
+            return render(request, "app/base.html")
+    else:
+        form = AvatarFormulario()
+    return render(request, "app/agregarAvatar.html", {'form': form})
 
 
