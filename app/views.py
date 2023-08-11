@@ -138,7 +138,12 @@ def createDocente(request):
     else:
         miForm = DocenteForm()   
 
-    return render(request, "app/docenteForm.html", {'form': miForm})  
+    return render(request, "app/docenteForm.html", {'form': miForm}) 
+
+@login_required
+def viewDocente(request, id_docente):
+    docente = Docente.objects.get(id=id_docente)
+    return render(request, "app/docente_view.html", {'docente': docente}) 
 
 @login_required
 def carreras(request):
@@ -190,7 +195,12 @@ def createCarrera(request):
     else:
         miForm = CarreraForm()   
 
-    return render(request, "app/carreraForm2.html", {'form': miForm}) 
+    return render(request, "app/carreraForm2.html", {'form': miForm})
+
+@login_required
+def viewCarrera(request, id_carrera):
+    carrera = Carrera.objects.get(id=id_carrera)
+    return render(request, "app/carrera_view.html", {'carrera': carrera}) 
 
 
 @login_required

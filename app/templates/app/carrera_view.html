@@ -37,13 +37,13 @@
 
   </style>
 </head>
-<h1>Postgrados</h1>
+<h1>Carreras</h1>
 <body style="background-image: url('{% static 'app/assets/fondo.jpg' %}'); background-size: cover; color: dark-grey"></body>
 <body>
     <div class="container">
       <table>
           <tr>
-              <td><h3>Postgrado: {{object}}</h3></td>
+              <td><h3>Carrera: {{object}}</h3></td>
           </tr>
       </table>
       <table class="table table-striped table-hover">
@@ -59,14 +59,14 @@
         <tbody>
             
             <tr>
-                <td>{{ postgrado.id }}</td>
-                <td>{{ postgrado.nombre }}</td>
-                <td>{{ postgrado.modalidad }}</td>
-                <td>{{ postgrado.duracion }}</td>
-                <td>{{ postgrado.financiacion }}</td>
+                <td>{{ carrera.id }}</td>
+                <td>{{ carrera.nombre }}</td>
+                <td>{{ carrera.modalidad }}</td>
+                <td>{{ carrera.duracion }}</td>
+                <td>{{ carrera.financiacion }}</td>
                 <td>
                     <a
-                      href="{% url 'postgrados'%}"
+                      href="{% url 'carreras'%}"
                       class="btn btn-danger"
                       style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
                       ><i class="fa fa-share fa-sm" title="List Back">Volver</i>

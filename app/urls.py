@@ -45,6 +45,8 @@ urlpatterns = [
     path('agregar_avatar/', agregarAvatar, name="agregar_avatar"),
 
     path('view_postgrado/<id_postgrado>/', viewPostgrado, name="view_postgrado"),
+    path('view_carrera/<id_carrera>/', viewCarrera, name="view_carrera"),
+    path('view_docente/<id_docente>/', viewDocente, name="view_docente"),
 
 
 ]
