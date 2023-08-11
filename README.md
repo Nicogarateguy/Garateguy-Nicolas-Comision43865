@@ -1,4 +1,4 @@
-<h1 align="center"> Tercera-preentrega-Garateguy </h1>
+<h1 align="center"> Proyecto Final - Web Universidad Central </h1>
 <h2 align="center"> Proyecto WEB Django </h2>
 
 <h3 align="left"> Descripción del proyecto </h3>
