@@ -4,6 +4,7 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <style>
     .container {
       text-align: center;
@@ -23,13 +24,24 @@
       color: white;
     }
 
+    body {
+            background-image: url('{% static "app/assets/fondo2.jpg" %}');
+            background-size: cover;
+            color: dark-grey;
+        }
+
+        /* Adjusted button padding and font size */
+        .btn-sm-custom {
+            padding: 0.25rem 0.5rem;
+            font-size: 0.75rem;
+        }
+      
   </style>
 </head>
-<h1>Docentes</h1>
-<body style="background-image: url('{% static 'app/assets/fondo2.jpg' %}'); background-size: cover; color: dark-grey"></body>
 <body>
-    <div class="container">
-      <table>
+  <div class="container">
+      <h1>Docentes</h1>
+        <table>
             <tr>
                 <td width="200"><h3>Docentes</h3></td>
                 <td>

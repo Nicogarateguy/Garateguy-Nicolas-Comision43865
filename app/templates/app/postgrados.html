@@ -24,7 +24,6 @@
       color: rgb(50, 50, 138);
     }
 
-    
     body {
             background-image: url('{% static "app/assets/fondo.jpg" %}');
             background-size: cover;
@@ -36,12 +35,12 @@
             padding: 0.25rem 0.5rem;
             font-size: 0.75rem;
         }
+      
   </style>
 </head>
-<h1>Postgrados</h1>
-<body style="background-image: url('{% static 'app/assets/fondo.jpg' %}'); background-size: cover; color: white;"></body>
 <body>
-    <div class="container">
+  <div class="container">
+      <h1>Postgrados</h1>
         <table>
             <tr>
                 <td width="200"><h3>Postgrados</h3></td>
@@ -64,29 +63,29 @@
               <th scope="col">Financiacion</th>
               <th scope="col">Acciones</th>
             </tr>
-          </thead>
-          <tbody>
-              {% for postgrado in postgrados %}
-              <tr>
-                  <td>{{ postgrado.id }}</td>
-                  <td>{{ postgrado.nombre }}</td>
-                  <td>{{ postgrado.modalidad }}</td>
-                  <td>{{ postgrado.duracion }}</td>
-                  <td>{{ postgrado.financiacion }}</td>
-                  <td>
-                      <a
-                        href="{% url 'update_postgrado' postgrado.id %}"
-                        class="btn btn-primary"
-                        style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
-                        ><i class="fa fa-edit fa-sm" title="Edit Record"></i>
-                      </a>
-                      <a
-                        href="{% url 'delete_postgrado' postgrado.id %}"
-                        class="btn btn-danger"
-                        style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
-                        ><i class="fa fa-trash fa-sm" title="Delete Record"></i>
-                      </a>
-                   </td>
+       </thead>
+       <tbody>
+           {% for postgrado in postgrados %}
+           <tr>
+                <td>{{ postgrado.id }}</td>
+                <td>{{ postgrado.nombre }}</td>
+                <td>{{ postgrado.modalidad }}</td>
+                <td>{{ postgrado.duracion }}</td>
+                <td>{{ postgrado.financiacion }}</td>
+                <td>
+                    <a
+                      href="{% url 'update_postgrado' postgrado.id %}"
+                      class="btn btn-primary"
+                      style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                      ><i class="fa fa-edit fa-sm" title="Edit Record"></i>
+                    </a>
+                    <a
+                      href="{% url 'delete_postgrado' postgrado.id %}"
+                      class="btn btn-danger"
+                      style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                      ><i class="fa fa-trash fa-sm" title="Delete Record"></i>
+                    </a>
+                  </td>
 
               </tr>
               {% endfor %}
