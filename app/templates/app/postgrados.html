@@ -74,6 +74,12 @@
                 <td>{{ postgrado.financiacion }}</td>
                 <td>
                     <a
+                      href="{% url 'view_postgrado' postgrado.id %}"
+                      class="btn btn-info"
+                      style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                      ><i class="fa fa-search fa-sm" title="View Record"></i>
+                    </a> 
+                    <a
                       href="{% url 'update_postgrado' postgrado.id %}"
                       class="btn btn-primary"
                       style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"

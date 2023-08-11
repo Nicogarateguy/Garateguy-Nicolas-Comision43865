@@ -245,6 +245,11 @@ def createPostgrado(request):
 
     return render(request, "app/postgradoForm.html", {'form': miForm}) 
 
+@login_required
+def viewPostgrado(request, id_postgrado):
+    postgrado = Postgrado.objects.get(id=id_postgrado)
+    return render(request, "app/postgrado_view.html", {'postgrado': postgrado}) 
+
 
 class AlumnoList(LoginRequiredMixin, ListView):
     model = Alumno

@@ -29,9 +29,9 @@
                 margin-right: 10px
                 <p style="color:rgb(161, 99, 48)">Bienvenido {{ user.username|upper }}</p>
                 <div class="text-center">
-                    <img src="{{ request.session.avatar }}" height="40px" weight="40px"/>
+                    <img src="{{ request.session.avatar }}" height="40px" weight="40px" style="margin-left:10px;"/>
                 </div>
-                <a class="btn btn-primary btn-lg active" href="{% url 'logout' %}">Logout</a>
+                <a class="btn btn-primary btn-lg active" href="{% url 'logout' %}" style="margin-left:10px;">Logout</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                 {% else %}    

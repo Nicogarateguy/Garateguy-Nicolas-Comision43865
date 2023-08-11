@@ -44,5 +44,7 @@ urlpatterns = [
     path('editar_perfil/', editarPerfil, name="editar_perfil"),
     path('agregar_avatar/', agregarAvatar, name="agregar_avatar"),
 
+    path('view_postgrado/<id_postgrado>/', viewPostgrado, name="view_postgrado"),
+
 
 ]
