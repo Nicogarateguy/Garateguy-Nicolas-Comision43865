@@ -34,8 +34,8 @@ def docentes(request):
 def alumnos(request):
     return render(request, "app/alumnos.html")
 
-def becas(request):
-    return render(request, "app/becas.html")
+def sobremi(request):
+    return render(request, "app/sobremi.html")
 
 def alumniblue(request):
     return render(request, "app/alumniblue.html")

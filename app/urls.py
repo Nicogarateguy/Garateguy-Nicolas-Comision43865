@@ -10,7 +10,7 @@ urlpatterns = [
     path('postgrados/', postgrados, name="postgrados"),
     path('docentes/', docentes, name="docentes"),
     
-    path('becas/', becas, name ="becas"),
+    path('sobremi/', sobremi, name ="sobremi"),
     path('alumni_blue/', alumniblue, name ="alumni_blue"),
     
     path('carrera_form/', carreraForm, name="carrera_form"),
