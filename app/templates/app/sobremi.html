@@ -4,9 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" 
+    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" 
+    crossorigin="anonymous" 
+    referrerpolicy="no-referrer" />
     <title>Acerca de mí</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="styles.css">
     <style>
         h4 {
             text-align: justify;
@@ -21,16 +24,11 @@
     <h4>Estuve trabajando varios años en el ámbito público de un ente autónomo, específicamente en el Departamento de Hacienda, oficina de licitaciones</h4>
     <h4>Además de seguir formándome en mi área hace poco decidí entrar en el mundo de la programación como una manera de diversificar y poder dedicarme a esto en un futuro. Próximamente quiero continuar estudiando programación y enfocarme en áreas que por mi formación univeritaria sea la más adecuada.</h4>
     <body style="background-image: url('{% static 'app/assets/fondo3.jpg' %}'); background-size: cover; color: dark-grey"></body>
-    <a href="https://www.facebook.com/nicolas.garateguybidegain?mibextid=ZbWKwL">
-        <img src="facebook-icon.png" alt="Facebook">
-      </a>
-      
-      <a href="https://twitter.com/ngara7?t=0lEGBk0UJ0AuHIPiqqt8IQ&s=09">
-        <img src="twitter-icon.png" alt="Twitter">
-      </a>
-      
-      <a href="https://www.instagram.com/invites/contact/?i=1jt932ymgrnkz&utm_content=221nvu3">
-        <img src="instagram-icon.png" alt="Instagram">
-    </a> 
+    <div class="buttons-network__button">
+      <a href="https://www.facebook.com/nicolas.garateguybidegain?mibextid=ZbWKwL"class="fa fa-facebook fa-lg"style="color: #2f3de3;margin: 30px;"></a>
+      <a href="https://twitter.com/ngara7?t=0lEGBk0UJ0AuHIPiqqt8IQ&s=09" class="fa fa-x-twitter fa-lg"style="color: #e1e8f4;margin: 30px;"></a>
+      <a href="https://www.instagram.com/invites/contact/?i=1jt932ymgrnkz&utm_content=221nvu3"class="fa fa-instagram fa-lg"style="color: #ec48ae;margin: 30px;"></a>
+      <a href="https://www.linkedin.com/in/nicolasgarateguy"class="fa fa-linkedin fa-lg"style="color: #2860df;margin: 30px"></a>
+    </div> 
 </body>
 </html>
