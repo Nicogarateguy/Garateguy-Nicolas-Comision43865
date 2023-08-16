@@ -9,8 +9,6 @@ amplia información de sus carreras y el cuerpo académico que dicta las clases.
 Se aclara que este proyecto está aún en desarrollo dado que además de las secciones a las que se puede acceder desde el panel principal
 también se agregarán otras como "Noticias", "Admisiones", "Eventos", etc.
 
-<h3 align="left"> Estado del proyecto </h3>
-:construction: Proyecto en construcción :construction:
 <h3 align="left"> :hammer:Funcionalidades del proyecto </h3>
 
 `Funcionalidad 1`: En los formularios carreraForm2, postgradoForm y docenteForm se hizo la prueba de ingresar nuevos datos los cuales fueron agregados de manera exitosa. 
